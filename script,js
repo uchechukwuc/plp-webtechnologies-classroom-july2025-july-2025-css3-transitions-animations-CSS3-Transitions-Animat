@@ -1,0 +1,51 @@
+/* ===============================
+   Part 2: Functions, Scope & Return Values
+   =============================== */
+
+// Global scope variable
+let clickCount = 0;
+
+// Function with parameter & return value
+function calculateDouble(num) {
+  return num * 2;
+}
+
+// Function showing local scope use
+function incrementClick() {
+  let localClicks = ++clickCount;
+  return localClicks;
+}
+
+/* ===============================
+   Part 3: JS + CSS Integration
+   =============================== */
+
+// Animate the box with bounce
+const box = document.querySelector('.box');
+document.getElementById('animateBoxBtn').addEventListener('click', () => {
+  // Reset animation by forcing reflow
+  box.classList.remove('animate');
+  void box.offsetWidth; // trigger reflow
+  box.classList.add('animate');
+});
+
+// Toggle popup open/close
+const popup = document.getElementById('popup');
+document.getElementById('togglePopupBtn').addEventListener('click', () => {
+  togglePopup();
+});
+
+function togglePopup() {
+  popup.classList.toggle('active');
+  let current = incrementClick();
+  console.log(`Popup toggled ${current} times (double: ${calculateDouble(current)})`);
+  return popup.classList.contains('active');
+}
+
+/* ===============================
+   Bonus: Card Flip Animation
+   =============================== */
+const card = document.getElementById('flipCard');
+document.getElementById('flipCardBtn').addEventListener('click', () => {
+  card.classList.toggle('is-flipped');
+});
